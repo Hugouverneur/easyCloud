@@ -24,9 +24,9 @@ html {
 body {
     margin: 0px;
 }
-main {
+/* main {
     margin: 0px 18%;
-}
+} */
 
 /* Reset link style */
 a {
@@ -35,7 +35,7 @@ a {
 }
 
 /* Text logo */
-.p_logo #easy_light{
+.light_text{
     font-family: jost-light;
 }
 .p_logo #cloud_bold{
