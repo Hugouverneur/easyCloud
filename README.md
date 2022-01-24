@@ -1,4 +1,9 @@
-# EasyCloud
+# ☁ EasyCloud
+
+## Présentation
+Projet réalisé dans le cadre du Projet Inter Matière (PIM) de l'Estiam en 2022.
+
+Notre objectif est de rendre la création d'intance dans le cloud le plus simple possible.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
