@@ -10,24 +10,35 @@ export class AuthService {
 
   createNewUser(email: string, password: string) {
     const auth = firebaseAuth.getAuth();
-    firebaseAuth.createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential;
-      })
-      .catch((err) => {
-        const error = err;
-      });
+    return new Promise(
+      (resolve, reject) => {
+        firebaseAuth.createUserWithEmailAndPassword(auth, email, password).then(
+          (userCredential) => {
+            resolve(userCredential);
+          },
+          (error) => {
+            reject(error);
+          }
+        )
+
+      }
+    )
   }
 
   signIn(email: string, password: string) {
     const auth = firebaseAuth.getAuth();
-    firebaseAuth.signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential;
-      })
-      .catch((err) => {
-        const error = err;
-      })
+    return new Promise(
+      (resolve, reject) => {
+        firebaseAuth.signInWithEmailAndPassword(auth, email, password).then(
+          (success) => {
+            resolve(success);
+          },
+          (error) => {
+            reject(error);
+          }
+        )
+      }
+    )
   }
 
   signOut() {

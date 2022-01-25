@@ -6,10 +6,13 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '**', redirectTo: '/' },
   { path: '', component: HomeComponent},
 
   { path: 'signup', component: SignupComponent},
   { path: 'signin', component: SigninComponent},
+
+  // { path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent },
 ];
 
 @NgModule({

@@ -5,5 +5,10 @@
             <p class="p_logo"><span class="light_text">easy</span><span id="cloud_bold">CLoud</span></p>
         </a>
         <a routerLink="">Instances</a>
+        <a routerLink="/signup" *ngIf="!isAuth">Inscription</a>
+        <a routerLink="/signin" *ngIf="!isAuth">Connexion</a>
+        <a (click)="onSignOut()" *ngIf="isAuth">Déconnexion</a>
+        <div *ngIf="isAuth" style="background-color: rgb(5, 179, 5); width: 10px; height: 10px; border-radius: 10px"></div>
+        <div *ngIf="!isAuth" style="background-color: red; width: 10px; height: 10px; border-radius: 10px"></div>
     </div>
 </nav>
