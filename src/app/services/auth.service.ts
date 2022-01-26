@@ -17,7 +17,7 @@ export class AuthService {
             resolve(userCredential);
           },
           (error) => {
-            reject(error);
+            reject(error)
           }
         )
 

@@ -1,0 +1,30 @@
+<div class="app_wrap">
+    <div class="form_container">
+        <h1>Créer une instance</h1>
+        <form [formGroup]="newInstanceForm" (ngSubmit)="onSubmit()">
+            <label for="vmName">Nom de la Machine Virtuell</label>
+            <input type="text" id="vmName" formControlName="vmName">
+    
+            <label for="unity">Unité</label>
+            <select formControlName="unity" id="unity">
+                <option value="MB" selected>MB</option>
+                <option value="GB">GB</option>
+            </select>
+    
+            <label for="ram">RAM</label>
+            <input type="number" formControlName="ram" id="ram" min="0">
+    
+            <label for="storage">Stockage</label>
+            <input type="number" formControlName="storage" id="storage">
+    
+            <label for="os">Système d'exploitation</label>
+            <select formControlName="os" id="os">
+                <option value="windows" selected>Windows</option>
+                <option value="ubuntu">Ubuntu</option>
+            </select>
+    
+            <button type="submit" class="btn primary_btn" [disabled]="newInstanceForm.invalid">Créer mon instance</button>
+            <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        </form>
+    </div>
+</div>

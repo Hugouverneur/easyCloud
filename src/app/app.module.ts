@@ -9,6 +9,9 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { NewInstanceComponent } from './components/new-instance/new-instance.component';
+import { ListInstanceComponent } from './components/list-instance/list-instance.component';
+import { DetailInstanceComponent } from './components/detail-instance/detail-instance.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { SignupComponent } from './components/auth/signup/signup.component';
     FooterComponent,
     HomeComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    NewInstanceComponent,
+    ListInstanceComponent,
+    DetailInstanceComponent
   ],
   imports: [
     BrowserModule,

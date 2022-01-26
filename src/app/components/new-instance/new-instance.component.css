@@ -1,0 +1,15 @@
+.form_container {
+    background-color: white;
+    border-radius: 12px;
+    margin: 56px;
+    padding: 12px 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form select {
+    width: 75%;
+}

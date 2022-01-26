@@ -8,7 +8,7 @@
             <label for="password">Mot-de-passe</label>
             <input type="password" id="password" formControlName="password">
 
-            <button type="submit"  [disabled]="signinForm.invalid">S'inscrire</button>
+            <button type="submit" class="btn primary_btn" [disabled]="signinForm.invalid">Se connecter</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>
         </form>
     </div>

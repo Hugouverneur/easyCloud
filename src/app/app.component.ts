@@ -15,7 +15,8 @@ export class AppComponent {
       projectId: "easycloud-31b61",
       storageBucket: "easycloud-31b61.appspot.com",
       messagingSenderId: "276184904347",
-      appId: "1:276184904347:web:b4d2de152e39a37d3ccc3e"
+      appId: "1:276184904347:web:b4d2de152e39a37d3ccc3e",
+      databaseURL: "https://easycloud-31b61-default-rtdb.europe-west1.firebasedatabase.app"
     };
     firebase.initializeApp(firebaseConfig);
   }

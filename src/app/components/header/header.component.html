@@ -4,7 +4,7 @@
             <img src="../../../assets/img/easyCloud-logo.svg" alt="easyCloud" width="56">
             <p class="p_logo"><span class="light_text">easy</span><span id="cloud_bold">CLoud</span></p>
         </a>
-        <a routerLink="">Instances</a>
+        <a routerLink="/list-instances">Instances</a>
         <a routerLink="/signup" *ngIf="!isAuth">Inscription</a>
         <a routerLink="/signin" *ngIf="!isAuth">Connexion</a>
         <a (click)="onSignOut()" *ngIf="isAuth">Déconnexion</a>
