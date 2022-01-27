@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { InstancesService } from 'src/app/services/instances.service';
 import { Instance } from '../../models/instance.model';
 import * as firebaseAuth from 'firebase/auth';
+import { PowereshellService } from 'src/app/services/powereshell.service';
 
 @Component({
   selector: 'app-new-instance',
@@ -17,10 +18,12 @@ export class NewInstanceComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private instancesService: InstancesService,
-              private router: Router) { }
+              private router: Router,
+              private pss: PowereshellService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     this.initForm();
+    this.callPs();
   }
 
   initForm() {
@@ -57,8 +60,13 @@ export class NewInstanceComponent implements OnInit {
       (error) => {
         this.errorMessage = error;
       }
-    )
+    );
+  }
 
+  callPs() {
+    console.log('START');
+    
+    this.pss.createVm();
   }
 
 }
