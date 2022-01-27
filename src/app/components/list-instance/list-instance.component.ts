@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Instance } from 'src/app/models/instance.model';
 import { InstancesService } from 'src/app/services/instances.service';
 import * as firebaseAuth from 'firebase/auth';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-instance',
@@ -10,17 +11,33 @@ import * as firebaseAuth from 'firebase/auth';
 })
 export class ListInstanceComponent implements OnInit {
 
-  instances: any = [];
+  instances: Instance[] = [];
+  instancesKeys: any[] = [];
+  instancesSubscription!: Subscription;
 
   constructor(private instancesService: InstancesService) { }
 
   ngOnInit(): void {
-    this.getInstancesUser(firebaseAuth.getAuth().currentUser?.uid);
-    console.log(this.instances)
+    this.getInstancesUser();
+    
   }
 
-  getInstancesUser(uid: any) {
-    this.instancesService.getInstancesUser(uid)
+  // Trouver comment retourner une observable depuis le service
+  // Instance sera modifier que si c'est une observable
+  getInstancesUser() {
+    
+    this.instancesSubscription = this.instancesService.instancesSubject.subscribe(
+      (instance: Instance[]) => {
+        this.instances = instance;
+        this.instancesKeys = Object.keys(instance);
+      }
+    );
+    this.instancesService.getInstancesUser();
+    this.instancesService.emitInstances();
+  }
+
+  ngOnDestroy(): void {
+    this.instancesSubscription.unsubscribe();
   }
 
 }

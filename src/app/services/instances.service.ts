@@ -1,22 +1,31 @@
 import { DebugElement, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Instance } from '../models/instance.model';
-import * as firebaseDb from 'firebase/database';
-import { DataSnapshot } from 'firebase/database';
+import { equalTo, getDatabase, limitToFirst, onValue, orderByChild, orderByValue, push, query, ref, } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstancesService {
 
+  instances: Instance[] = [];
+  instancesSubject = new Subject<Instance[]>();
 
-  constructor() { }
+
+  constructor() {
+    this.getInstancesUser();
+  }
+
+  emitInstances() {
+    this.instancesSubject.next(this.instances);
+  }
 
   newInstance(instance: Instance) {
-    const db = firebaseDb.getDatabase();
+    const db = getDatabase();
     return new Promise(
       (resolve, reject) => {
-        firebaseDb.push(firebaseDb.ref(db, 'instances/'), instance).then(
+        push(ref(db, 'instances/'), instance).then(
           (success) => {
             resolve(success);
           },
@@ -28,19 +37,13 @@ export class InstancesService {
     );
   }
 
-  getInstancesUser(uid: string) {
-    const db = firebaseDb.getDatabase();
-    return new Promise(
-      (resolve, reject) => {
-        firebaseDb.onValue(firebaseDb.ref(db, '/instances'), (data: DataSnapshot) => {
-          resolve(data.val);
-        },
-        (error) => {
-          reject(error);
-        }
-        );
-      }
-    );
+  getInstancesUser() {
+    const db = getDatabase();
+    const req = query(ref(db, '/instances'), orderByChild('uid'), equalTo(getAuth().currentUser!.uid));
+    onValue(req, (data) => {
+      this.instances = data.val() ? data.val() : [];
+      this.emitInstances();
+    });
   }
 
 

@@ -1,1 +1,12 @@
-<p>list-instance works!</p>
+<div class="app_wrap">
+    <h1>Mes instances</h1>
+    <a routerLink="/instance/{{ key }}" class="instance_container" *ngFor="let key of instancesKeys">
+        <div class="left_container">
+            <p>{{ instances[key].vmName }}</p>
+        </div>
+        <div class="right_container">
+            <div style="background-color: rgb(5, 179, 5); width: 10px; height: 10px; border-radius: 10px"></div>
+            <p>{{ instances[key].os }}</p>
+        </div>
+    </a>
+</div>
