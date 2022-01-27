@@ -24,9 +24,6 @@ html {
 body {
     margin: 0px;
 }
-/* main {
-    margin: 0px 18%;
-} */
 
 .app_wrap {
     margin: auto;
@@ -124,4 +121,10 @@ input:focus, select:focus {
     background: #ecffd6;
     border: 1px solid #617c42;
     border-radius: 4px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px
 }

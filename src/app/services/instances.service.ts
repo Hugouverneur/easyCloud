@@ -1,7 +1,7 @@
 import { DebugElement, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Instance } from '../models/instance.model';
-import { equalTo, getDatabase, limitToFirst, onValue, orderByChild, orderByValue, push, query, ref, } from 'firebase/database';
+import { child, equalTo, get, getDatabase, limitToFirst, onValue, orderByChild, orderByValue, push, query, ref, } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class InstancesService {
   instances: Instance[] = [];
   instancesSubject = new Subject<Instance[]>();
 
+  instance!: Instance;
 
   constructor() {
     this.getInstancesUser();
@@ -46,5 +47,20 @@ export class InstancesService {
     });
   }
 
+  getSingleInstance(id: string) {
+    const db = getDatabase();
+    return new Promise(
+      (resolve, reject) => {
+        get(child(ref(db), `/instances/${id}`)).then(
+          (data) => {
+            resolve(data.val());
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
+  }
 
 }

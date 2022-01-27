@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Instance } from 'src/app/models/instance.model';
+import { InstancesService } from 'src/app/services/instances.service';
 
 @Component({
   selector: 'app-detail-instance',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailInstanceComponent implements OnInit {
 
-  constructor() { }
+  instance: any = {};
+
+  constructor(private instancesService: InstancesService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getInstance(this.route.snapshot.params['id']);
+  }
+
+  getInstance(instanceId: string) {
+    this.instancesService.getSingleInstance(instanceId).then(
+      (data) => {
+        this.instance = data;
+      }
+    );
   }
 
 }

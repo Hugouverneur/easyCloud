@@ -1,1 +1,31 @@
-<p>detail-instance works!</p>
+<div class="app_wrap">
+    <div class="instance_header">
+        <h1>{{ instance.vmName }}</h1>
+        <div class="dot" style="background-color: rgb(5, 179, 5)"></div>
+    </div>
+    <hr>
+    <div class="instance_body">
+        <section class="description">
+            <h2>Description</h2>
+            <table class="feature_table">
+                <tbody>
+                    <tr>
+                        <td>RAM :</td>
+                        <td>{{ instance.ram }} {{ instance.unity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Stockage :</td>
+                        <td>{{ instance.storage }} {{ instance.unity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Système d'exploitation :</td>
+                        <td>{{ instance.os }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="performance">
+            <h2>Performances</h2>
+        </section>
+    </div>
+</div>
