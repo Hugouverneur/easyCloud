@@ -23,7 +23,6 @@ export class NewInstanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.callPs();
   }
 
   initForm() {
@@ -55,6 +54,7 @@ export class NewInstanceComponent implements OnInit {
 
     this.instancesService.newInstance(newInstance).then(
       () => {
+        this.pss.createVm(newInstance);
         this.router.navigate(['/'])// TODO Rediriger vers la nouvelle instance créé
       },
       (error) => {
@@ -62,11 +62,4 @@ export class NewInstanceComponent implements OnInit {
       }
     );
   }
-
-  callPs() {
-    console.log('START');
-    
-    this.pss.createVm();
-  }
-
 }

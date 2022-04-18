@@ -1,19 +1,30 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as PowerShell from 'powershell';
+import { environment } from 'src/environments/environment';
+import { Instance } from '../models/instance.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PowereshellService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  createVm() {
-    const ps = new PowerShell("echo 'Powershell works !'");
-    ps.on("output", (data: any) => {
-      console.log(data);
-      
-    })
+  // Methode préfaite pour faire nos requetes vers la base de donnée
+  private async request(method: string, url: string, data?: any) {
+    const result = this.http.request(method, url, {
+      body: data,
+      responseType: 'json',
+      observe: 'body'
+    });
+
+    return new Promise((resolve, reject) => {
+      result.subscribe(resolve, reject);
+    });
+  }
+
+  createVm(vmParams: Instance) {
+    return this.request('POST', `${environment.serverUrl}/createvm`, vmParams)
   }
 
 }
