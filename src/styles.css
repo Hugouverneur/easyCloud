@@ -46,7 +46,7 @@ a {
 }
 
 /* Boutons */
-/* .btn {
+.btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,17 +55,17 @@ a {
     font-weight: bold;
     border: none;
     border-radius: 6px;
-} */
+}
 .btn:hover {
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
     cursor: pointer;
 }
 
-/* .primary_btn {
+.primary_btn {
     background: #00C9FF;
     color: white;
     transition: 0.5s ease;
-} */
+}
 .primary_btn:hover {
     background: #92FE9D;
 }

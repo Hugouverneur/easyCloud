@@ -14,6 +14,7 @@ import { NewInstanceComponent } from './components/new-instance/new-instance.com
 import { ListInstanceComponent } from './components/list-instance/list-instance.component';
 import { DetailInstanceComponent } from './components/detail-instance/detail-instance.component';
 import { EditInstanceComponent } from './components/edit-instance/edit-instance.component';
+import { DeleteInstanceComponent } from './components/delete-instance/delete-instance.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditInstanceComponent } from './components/edit-instance/edit-instance.
     ListInstanceComponent,
     DetailInstanceComponent,
     EditInstanceComponent,
+    DeleteInstanceComponent,
   ],
   imports: [
     BrowserModule,

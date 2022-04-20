@@ -1,7 +1,7 @@
 import { DebugElement, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { Instance } from '../models/instance.model';
-import { child, equalTo, get, getDatabase, limitToFirst, onValue, orderByChild, orderByValue, push, query, ref, update, } from 'firebase/database';
+import { child, equalTo, get, getDatabase, limitToFirst, onValue, orderByChild, orderByValue, push, query, ref, remove, update, } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 @Injectable({
@@ -39,12 +39,15 @@ export class InstancesService {
   }
 
   editInstance(instance: Instance, instanceId: string) {
-    console.log('IN');
-    
     const db = getDatabase();
     const updates = {};
     updates['/instances/' + instanceId] = instance;
     return update(ref(db), updates);
+  }
+
+  deleteInstance(instanceId: string) {
+    const db = getDatabase();
+    return remove(ref(db, '/instances/' + instanceId));
   }
 
   getInstancesUser() {

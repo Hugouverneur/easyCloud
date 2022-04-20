@@ -30,7 +30,6 @@ export class EditInstanceComponent implements OnInit {
   }
 
   initForm() {
-    console.log(this.instance);
     this.editInstanceForm = this.formBuilder.group({
       vmName: ['', [Validators.required]],
       unity: ['', [Validators.required]],
@@ -58,8 +57,6 @@ export class EditInstanceComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('sub');
-    
     const vmName = this.editInstanceForm.get('vmName')!.value;
     const unity = this.editInstanceForm.get('unity')!.value;
     const ram = this.editInstanceForm.get('ram')!.value;
@@ -89,4 +86,9 @@ export class EditInstanceComponent implements OnInit {
     );
   }
 
+  confirmBeforeDelete() {
+    if(confirm('Etes-vous sûr de vouloir supprimer votre instance !')) {
+      this.router.navigate(['/delete-instance/' + this.instanceId]);
+    }
+  }
 }

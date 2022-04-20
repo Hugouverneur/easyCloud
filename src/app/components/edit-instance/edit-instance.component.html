@@ -1,7 +1,13 @@
 <div class="app_wrap">
     <div class="form_container">
         <a routerLink="/instance/{{ instanceId }}"><span class="material-icons-round">arrow_back</span></a>
-        <h1>Modifier {{ instance.vmName }}</h1>
+        <div class="header_inline_spbetween">
+            <h1>Modifier {{ instance.vmName }}</h1>
+            <button (click)="confirmBeforeDelete()">
+                <span class="material-icons-round">delete</span>
+                 Supprimer mon instance
+            </button>
+        </div>
         <form [formGroup]="editInstanceForm" (ngSubmit)="onSubmit()">
             <label for="vmName">Nom de la Machine Virtuell</label>
             <input type="text" id="vmName" formControlName="vmName">

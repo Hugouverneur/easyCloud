@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { DeleteInstanceComponent } from './components/delete-instance/delete-instance.component';
 import { DetailInstanceComponent } from './components/detail-instance/detail-instance.component';
 import { EditInstanceComponent } from './components/edit-instance/edit-instance.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'new-instance', canActivate: [AuthGuardService], component: NewInstanceComponent },
   { path: 'instance/:id', canActivate: [AuthGuardService], component: DetailInstanceComponent },
   { path: 'edit-instance/:id', canActivate: [AuthGuardService], component: EditInstanceComponent},
+  { path: 'delete-instance/:id', canActivate: [AuthGuardService], component: DeleteInstanceComponent},
 ];
 
 @NgModule({
