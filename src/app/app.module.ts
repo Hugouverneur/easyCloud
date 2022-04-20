@@ -13,6 +13,7 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { NewInstanceComponent } from './components/new-instance/new-instance.component';
 import { ListInstanceComponent } from './components/list-instance/list-instance.component';
 import { DetailInstanceComponent } from './components/detail-instance/detail-instance.component';
+import { EditInstanceComponent } from './components/edit-instance/edit-instance.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DetailInstanceComponent } from './components/detail-instance/detail-ins
     SignupComponent,
     NewInstanceComponent,
     ListInstanceComponent,
-    DetailInstanceComponent
+    DetailInstanceComponent,
+    EditInstanceComponent,
   ],
   imports: [
     BrowserModule,

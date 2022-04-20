@@ -11,12 +11,13 @@ import { InstancesService } from 'src/app/services/instances.service';
 export class DetailInstanceComponent implements OnInit {
 
   instance: any = {};
+  instanceId: string = this.route.snapshot.params['id'];
 
   constructor(private instancesService: InstancesService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getInstance(this.route.snapshot.params['id']);
+    this.getInstance(this.instanceId);
   }
 
   getInstance(instanceId: string) {

@@ -19,6 +19,12 @@
     flex-grow: 1;
 }
 
+.descritpion_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .performance {
     flex-grow: 5;
 }
