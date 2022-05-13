@@ -1,0 +1,10 @@
+#back_instance {
+    display: flex;
+    align-items: center;
+    transition: ease 0.2s;
+}
+
+#back_instance:hover {
+    cursor: pointer;
+    margin-left: -8px;
+}

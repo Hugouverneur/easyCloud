@@ -55,7 +55,7 @@ export class NewInstanceComponent implements OnInit {
     this.instancesService.newInstance(newInstance).then(
       () => {
         this.pss.createVm(newInstance);
-        this.router.navigate(['/'])// TODO Rediriger vers la nouvelle instance créé
+        this.router.navigate(['/list-instances'])// TODO Rediriger vers la nouvelle instance créé
       },
       (error) => {
         this.errorMessage = error;

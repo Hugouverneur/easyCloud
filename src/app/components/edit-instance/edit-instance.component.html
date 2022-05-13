@@ -1,11 +1,10 @@
 <div class="app_wrap">
     <div class="form_container">
-        <a routerLink="/instance/{{ instanceId }}"><span class="material-icons-round">arrow_back</span></a>
-        <div class="header_inline_spbetween">
+        <a routerLink="/instance/{{ instanceId }}" class="back_arrow"><span class="material-icons-round">arrow_back</span></a>
+        <div class="instance_header">
             <h1>Modifier {{ instance.vmName }}</h1>
-            <button (click)="confirmBeforeDelete()">
+            <button (click)="confirmBeforeDelete()" class="delete_btn" title="Supprimer mon instance">
                 <span class="material-icons-round">delete</span>
-                 Supprimer mon instance
             </button>
         </div>
         <form [formGroup]="editInstanceForm" (ngSubmit)="onSubmit()">

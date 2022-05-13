@@ -27,4 +27,8 @@ export class PowereshellService {
     return this.request('POST', `${environment.serverUrl}/createvm`, vmParams)
   }
 
+  editVm(vmParams: Instance) {
+    return this.request('POST', `${environment.serverUrl}/editvm`, vmParams)
+  }
+
 }

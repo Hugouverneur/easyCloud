@@ -64,7 +64,7 @@ export class EditInstanceComponent implements OnInit {
     const os = this.editInstanceForm.get('os')!.value;
     const uid = firebaseAuth.getAuth().currentUser?.uid;
 
-    const newInstance: Instance = {
+    const editInstance: Instance = {
         vmName: vmName,
         unity: unity,
         ram: ram,
@@ -73,9 +73,9 @@ export class EditInstanceComponent implements OnInit {
         uid: uid
     }
 
-    this.instancesService.editInstance(newInstance, this.instanceId).then(
+    this.instancesService.editInstance(editInstance, this.instanceId).then(
       () => {
-        // this.pss.createVm(newInstance); TODO Appeller le script PShell edit
+        this.pss.editVm(editInstance);
         this.router.navigate(['/instance/' + this.instanceId])
       },
       (error) => {
