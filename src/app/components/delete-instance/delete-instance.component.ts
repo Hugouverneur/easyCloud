@@ -22,7 +22,7 @@ export class DeleteInstanceComponent implements OnInit {
   deleteInstance() {
     this.instancesService.deleteInstance(this.route.snapshot.params['id']).then(
       () => {
-        // TODO Appel PShell script de suppression
+        this.pss.deleteVm(this.route.snapshot.params['id']);
       }
     )
   }

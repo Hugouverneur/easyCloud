@@ -32,10 +32,10 @@ export class EditInstanceComponent implements OnInit {
   initForm() {
     this.editInstanceForm = this.formBuilder.group({
       vmName: ['', [Validators.required]],
-      unity: ['', [Validators.required]],
+      unity: [{value: '', disabled: true}, [Validators.required]],
       ram: ['', [Validators.required]],
       storage: ['', [Validators.required]],
-      os: ['', [Validators.required]],
+      os: [{value: '', disabled: true}, [Validators.required]],
     });
   }
 
@@ -58,18 +58,16 @@ export class EditInstanceComponent implements OnInit {
 
   onSubmit() {
     const vmName = this.editInstanceForm.get('vmName')!.value;
-    const unity = this.editInstanceForm.get('unity')!.value;
     const ram = this.editInstanceForm.get('ram')!.value;
     const storage = this.editInstanceForm.get('storage')!.value;
-    const os = this.editInstanceForm.get('os')!.value;
     const uid = firebaseAuth.getAuth().currentUser?.uid;
 
     const editInstance: Instance = {
         vmName: vmName,
-        unity: unity,
+        unity: this.instance.unity,
         ram: ram,
         storage: storage,
-        os: os,
+        os: this.instance.os,
         uid: uid
     }
 
