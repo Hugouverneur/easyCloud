@@ -2,7 +2,7 @@
     <div class="form_container">
         <h1>Créer une instance</h1>
         <form [formGroup]="newInstanceForm" (ngSubmit)="onSubmit()">
-            <label for="vmName">Nom de la Machine Virtuell</label>
+            <label for="vmName">Nom de la Machine Virtuelle</label>
             <input type="text" id="vmName" formControlName="vmName">
     
             <label for="unity">Unité</label>
@@ -22,6 +22,9 @@
                 <option value="windows" selected>Windows</option>
                 <option value="ubuntu">Ubuntu</option>
             </select>
+
+            <label for="serverName">Nom du Serveur</label>
+            <input type="text" id="serverName" formControlName="serverName">
     
             <button type="submit" class="btn primary_btn" [disabled]="newInstanceForm.invalid">Créer mon instance</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>

@@ -28,6 +28,9 @@
                 <option value="windows">Windows</option>
                 <option value="ubuntu">Ubuntu</option>
             </select>
+
+            <label for="serverName">Nom du Serveur</label>
+            <input type="text" id="serverName" formControlName="serverName">
     
             <button type="submit" class="btn primary_btn" [disabled]="editInstanceForm.invalid">Sauvegarder</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>

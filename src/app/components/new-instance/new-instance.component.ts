@@ -32,6 +32,7 @@ export class NewInstanceComponent implements OnInit {
       ram: ['', [Validators.required]],
       storage: ['', [Validators.required]],
       os: ['', [Validators.required]],
+      serverName: ['', [Validators.required]],
     });
   }
 
@@ -42,6 +43,8 @@ export class NewInstanceComponent implements OnInit {
     const storage = this.newInstanceForm.get('storage')!.value;
     const os = this.newInstanceForm.get('os')!.value;
     const uid = firebaseAuth.getAuth().currentUser?.uid;
+    const serverName = this.newInstanceForm.get('serverName')!.value;
+
 
     const newInstance: Instance = {
         vmName: vmName,
@@ -49,17 +52,26 @@ export class NewInstanceComponent implements OnInit {
         ram: ram,
         storage: storage,
         os: os,
-        uid: uid
+        uid: uid,
+        serverName: serverName
     }
 
-    this.instancesService.newInstance(newInstance).then(
-      () => {
-        this.pss.createVm(newInstance);
-        this.router.navigate(['/list-instances'])// TODO Rediriger vers la nouvelle instance créé
-      },
-      (error) => {
-        this.errorMessage = error;
+    this.pss.createVm(newInstance).then(
+      (data) => {
+
+        newInstance['serverId'] = data;
+
+        this.instancesService.newInstance(newInstance).then(
+          () => {
+            this.router.navigate(['/list-instances'])// TODO Rediriger vers la nouvelle instance créé
+          },
+          (error) => {
+            this.errorMessage = error;
+          }
+        );
+
       }
     );
+    
   }
 }

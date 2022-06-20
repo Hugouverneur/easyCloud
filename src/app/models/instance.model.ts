@@ -6,6 +6,9 @@ export class Instance {
         public ram: number,
         public storage: number,
         public os: string,
-        public uid: any
+        public serverName: string,
+        public uid?: any,
+        public vmId?: any,
+        public serverId?: any,
     ) { };
 }
