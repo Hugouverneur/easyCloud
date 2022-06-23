@@ -15,6 +15,7 @@ import { ListInstanceComponent } from './components/list-instance/list-instance.
 import { DetailInstanceComponent } from './components/detail-instance/detail-instance.component';
 import { EditInstanceComponent } from './components/edit-instance/edit-instance.component';
 import { DeleteInstanceComponent } from './components/delete-instance/delete-instance.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DeleteInstanceComponent } from './components/delete-instance/delete-ins
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

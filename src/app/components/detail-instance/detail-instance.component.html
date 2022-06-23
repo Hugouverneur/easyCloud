@@ -28,7 +28,15 @@
             </table>
         </section>
         <section class="performance">
-            <h2>Performances</h2>
+            <h2>{{ test | async }}</h2>
+            <div class="chart">
+                <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    type="bar">
+                </canvas>
+            </div>
         </section>
     </div>
 </div>
