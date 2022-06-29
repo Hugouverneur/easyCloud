@@ -24,19 +24,35 @@
                         <td>Système d'exploitation :</td>
                         <td>{{ instance.os }}</td>
                     </tr>
+                    <tr>
+                        <td>Serveur :</td>
+                        <td>{{ instance.serverName }}</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
-        <section class="performance">
-            <h2>{{ test | async }}</h2>
-            <div class="chart">
-                <canvas baseChart
-                    [datasets]="barChartData"
-                    [labels]="barChartLabels"
-                    [options]="barChartOptions"
-                    type="bar">
-                </canvas>
+        <section class="perf_bars">
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_processor" [ngStyle]="{'height': (instanceMonitoring$ | async)[0]+'%'}">{{ (instanceMonitoring$ | async)[0] }}%</div>
+                </div>
+                <p>Processeur</p>
             </div>
+
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_ram" [ngStyle]="{'height': (instanceMonitoring$ | async)[1]+'%'}">{{ (instanceMonitoring$ | async)[1] }}%</div>
+                </div>
+                <p>RAM</p>
+            </div>
+
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_storage" [ngStyle]="{'height': (instanceMonitoring$ | async)[2]+'%'}">{{ (instanceMonitoring$ | async)[2] }}%</div>
+                </div>
+                <p>Stockage</p>
+            </div>
+
         </section>
     </div>
 </div>

@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Instance } from 'src/app/models/instance.model';
 import { InstancesService } from 'src/app/services/instances.service';
 import { Chart, ChartDataset } from 'chart.js';
-import { Subscription, interval, timer, map, Observable } from 'rxjs';
+import { Subscription, interval, timer, map, Observable, share } from 'rxjs';
+import { PowereshellService } from 'src/app/services/powereshell.service';
 
 @Component({
   selector: 'app-detail-instance',
@@ -15,24 +16,19 @@ export class DetailInstanceComponent implements OnInit {
   instance: any = {};
   instanceId: string = this.route.snapshot.params['id'];
 
-  test: Observable<number>;
-
-  barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  barChartLabels = ['Stockage', 'RAM', 'Processeur'];
-  barChartData: ChartDataset[] = [
-    {data: [0, 0, 0], label: '%'},
-  ];
+  instanceMonitoring$: Observable<number[]>;
 
   constructor(private instancesService: InstancesService,
+              private powereshellService: PowereshellService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getInstance(this.instanceId);
-    this.getMonitoring()
-    this.test = interval(1000);
+    this.getMonitoring();
+    this.instanceMonitoring$ = interval(3000).pipe(
+      map(() => this.getMonitoring()),
+      share() // Share observable (one observable with multiple subscribers)
+    );
   }
 
   getInstance(instanceId: string) {
@@ -43,10 +39,8 @@ export class DetailInstanceComponent implements OnInit {
     );
   }
 
-  getMonitoring() {
-    console.log('getMonitoring');
-    this.barChartData[0].data = [40, 70, 80];
-    console.log(this.barChartData);
-        
+  getMonitoring(): any {
+    // return this.powereshellService.getInstanceMonitoring(this.instanceId); // <- Appel powershell
+    return [Math.floor(Math.random()*100), Math.floor(Math.random()*100), Math.floor(Math.random()*100)] // Pour tester en dev
   }
 }
