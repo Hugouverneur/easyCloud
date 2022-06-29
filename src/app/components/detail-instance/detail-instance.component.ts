@@ -24,23 +24,29 @@ export class DetailInstanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInstance(this.instanceId);
-    this.getMonitoring();
-    this.instanceMonitoring$ = interval(3000).pipe(
-      map(() => this.getMonitoring()),
-      share() // Share observable (one observable with multiple subscribers)
-    );
   }
 
   getInstance(instanceId: string) {
     this.instancesService.getSingleInstance(instanceId).then(
       (data) => {
         this.instance = data;
+
+        this.instanceMonitoring$ = interval(3000).pipe(
+          map(() => this.getMonitoring()),
+          share() // Share observable (one observable with multiple subscribers)
+        );
       }
     );
   }
 
   getMonitoring(): any {
-    // return this.powereshellService.getInstanceMonitoring(this.instanceId); // <- Appel powershell
+    let vmParams = {
+      'instanceId': this.instanceId,
+      'virtualizationServer': this.instance.serverName
+    }
+    console.log(vmParams);
+    
+    // return this.powereshellService.getInstanceMonitoring(vmParams); // <- Appel powershell
     return [Math.floor(Math.random()*100), Math.floor(Math.random()*100), Math.floor(Math.random()*100)] // Pour tester en dev
   }
 }

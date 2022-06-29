@@ -35,8 +35,8 @@ export class PowereshellService {
     return this.request('POST', `${environment.serverUrl}/deletevm`, vmParams)
   }
 
-  getInstanceMonitoring(instanceId: string) {
-    return this.request('GET', `${environment.serverUrl}/instance-monitoring`, instanceId)
+  getInstanceMonitoring(vmParams: any) {    
+    return this.request('GET', `${environment.serverUrl}/instance-monitoring`, vmParams)
   }
 
 }
