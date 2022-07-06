@@ -32,11 +32,8 @@ export class EditInstanceComponent implements OnInit {
   initForm() {
     this.editInstanceForm = this.formBuilder.group({
       vmName: ['', [Validators.required]],
-      unity: [{value: '', disabled: true}, [Validators.required]],
       ram: ['', [Validators.required]],
       storage: ['', [Validators.required]],
-      os: [{value: '', disabled: true}, [Validators.required]],
-      serverName: [{value: '', disabled: true}, [Validators.required]],
     });
   }
 
@@ -44,15 +41,12 @@ export class EditInstanceComponent implements OnInit {
     this.instancesService.getSingleInstance(this.instanceId).then(
       (data) => {
         this.instance = data;
-
+        
         // Complète les champs avec les données récupéré
         this.editInstanceForm.setValue({
           vmName: this.instance.vmName,
-          unity: this.instance.unity,
           ram: this.instance.ram,
           storage: this.instance.storage,
-          os: this.instance.os,
-          severName: this.instance.severName
         });
       }
     );
@@ -62,7 +56,6 @@ export class EditInstanceComponent implements OnInit {
     const vmName = this.editInstanceForm.get('vmName')!.value;
     const ram = this.editInstanceForm.get('ram')!.value;
     const storage = this.editInstanceForm.get('storage')!.value;
-    const serverName = this.editInstanceForm.get('serverName')!.value;
 
     const editInstance: Instance = {
         vmName: vmName,
@@ -70,7 +63,10 @@ export class EditInstanceComponent implements OnInit {
         ram: ram,
         storage: storage,
         os: this.instance.os,
-        serverName: serverName
+        serverName: this.instance.serverName,
+        uid: this.instance.uid,
+        vmId: this.instance.vmId,
+        serverId: this.instance.serverId,
     }
 
     this.instancesService.editInstance(editInstance, this.instanceId).then(

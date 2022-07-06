@@ -5,6 +5,7 @@ import { InstancesService } from 'src/app/services/instances.service';
 import { Instance } from '../../models/instance.model';
 import * as firebaseAuth from 'firebase/auth';
 import { PowereshellService } from 'src/app/services/powereshell.service';
+import { LogarithmicScale } from 'chart.js';
 
 @Component({
   selector: 'app-new-instance',
@@ -57,10 +58,10 @@ export class NewInstanceComponent implements OnInit {
     }
 
     this.pss.createVm(newInstance).then(
-      (data) => {
-
-        newInstance['serverId'] = data;
-
+      (data: any) => {
+        newInstance['vmId'] = data.vmId;
+        newInstance['serverId'] = data.serverId;
+        
         this.instancesService.newInstance(newInstance).then(
           () => {
             this.router.navigate(['/list-instances'])// TODO Rediriger vers la nouvelle instance créé
@@ -70,6 +71,10 @@ export class NewInstanceComponent implements OnInit {
           }
         );
 
+      },
+      (error) => {
+        console.log(error);
+        
       }
     );
     

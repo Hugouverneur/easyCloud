@@ -10,27 +10,12 @@
         <form [formGroup]="editInstanceForm" (ngSubmit)="onSubmit()">
             <label for="vmName">Nom de la Machine Virtuell</label>
             <input type="text" id="vmName" formControlName="vmName">
-    
-            <label for="unity">Unité</label>
-            <select formControlName="unity" id="unity">
-                <option value="MB">MB</option>
-                <option value="GB">GB</option>
-            </select>
-    
-            <label for="ram">RAM</label>
+
+            <label for="ram">RAM ({{ instance.unity }})</label>
             <input type="number" formControlName="ram" id="ram" min="0">
     
-            <label for="storage">Stockage</label>
+            <label for="storage">Stockage ({{ instance.unity }})</label>
             <input type="number" formControlName="storage" id="storage">
-    
-            <label for="os">Système d'exploitation</label>
-            <select formControlName="os" id="os">
-                <option value="windows">Windows</option>
-                <option value="ubuntu">Ubuntu</option>
-            </select>
-
-            <label for="serverName">Nom du Serveur</label>
-            <input type="text" id="serverName" formControlName="serverName">
     
             <button type="submit" class="btn primary_btn" [disabled]="editInstanceForm.invalid">Sauvegarder</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>
