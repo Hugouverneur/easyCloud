@@ -5,26 +5,36 @@
             <label for="vmName">Nom de la Machine Virtuelle</label>
             <input type="text" id="vmName" formControlName="vmName">
     
-            <label for="unity">Unité</label>
-            <select formControlName="unity" id="unity">
-                <option value="MB" selected>MB</option>
-                <option value="GB">GB</option>
-            </select>
-    
             <label for="ram">RAM</label>
-            <input type="number" formControlName="ram" id="ram" min="0">
+            <div class="inline_input">
+                <input type="number" formControlName="ram" id="ram" min="0">
+                <select formControlName="ramUnity" id="ramUnity" style="width: 64px; margin-left: 8px">
+                    <option value="MB" selected>MB</option>
+                    <option value="GB">GB</option>
+                </select>
+            </div>
     
             <label for="storage">Stockage</label>
-            <input type="number" formControlName="storage" id="storage">
+            <div class="inline_input">
+                <input type="number" formControlName="storage" id="storage">
+                <select formControlName="storageUnity" id="storageUnity" style="width: 64px; margin-left: 8px">
+                    <option value="MB" selected>MB</option>
+                    <option value="GB">GB</option>
+                </select>
+            </div>
+
+            <label for="processor">Nombre de processeur</label>
+            <input type="number" formControlName="processor" id="processor">
     
             <label for="os">Système d'exploitation</label>
             <select formControlName="os" id="os">
+                <option *ngFot="let iso instanceAvailableIso" value="{{ iso }}" selected>{{ iso }}</option>
                 <option value="\\EASYCLOUD-APP\ISO\Test.iso" selected>Test.iso</option>
                 <option value="\\EASYCLOUD-APP\ISO\Test2.iso">Test2.iso</option>
             </select>
 
-            <label for="serverName">Nom du Serveur</label>
-            <input type="text" id="serverName" formControlName="serverName">
+            <label for="virtualizationServer">Nom du Serveur</label>
+            <input type="text" id="virtualizationServer" formControlName="virtualizationServer">
     
             <button type="submit" class="btn primary_btn" [disabled]="newInstanceForm.invalid">Créer mon instance</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>

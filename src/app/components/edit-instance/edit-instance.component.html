@@ -11,11 +11,14 @@
             <label for="vmName">Nom de la Machine Virtuell</label>
             <input type="text" id="vmName" formControlName="vmName">
 
-            <label for="ram">RAM ({{ instance.unity }})</label>
+            <label for="ram">RAM ({{ instance.ramUnity }})</label>
             <input type="number" formControlName="ram" id="ram" min="0">
     
-            <label for="storage">Stockage ({{ instance.unity }})</label>
+            <label for="storage">Stockage ({{ instance.storageUnity }})</label>
             <input type="number" formControlName="storage" id="storage">
+
+            <label for="processor">Nombre de processeur</label>
+            <input type="number" formControlName="processor" id="processor">
     
             <button type="submit" class="btn primary_btn" [disabled]="editInstanceForm.invalid">Sauvegarder</button>
             <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>

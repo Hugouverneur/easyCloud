@@ -42,7 +42,7 @@ export class DetailInstanceComponent implements OnInit {
   getMonitoring(): any {
     let vmParams = {
       'instanceId': this.instanceId,
-      'virtualizationServer': this.instance.serverName
+      'virtualizationServer': this.instance.virtualizationServer
     }
     console.log(vmParams);
     

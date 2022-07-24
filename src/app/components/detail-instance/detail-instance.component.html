@@ -15,19 +15,23 @@
                 <tbody>
                     <tr>
                         <td>RAM :</td>
-                        <td>{{ instance.ram }} {{ instance.unity }}</td>
+                        <td>{{ instance.ram }} {{ instance.ramUnity }}</td>
                     </tr>
                     <tr>
                         <td>Stockage :</td>
-                        <td>{{ instance.storage }} {{ instance.unity }}</td>
+                        <td>{{ instance.storage }} {{ instance.storageUnity }}</td>
                     </tr>
                     <tr>
-                        <td>Système d'exploitation :</td>
+                        <td>Nombre de processeur :</td>
+                        <td>{{ instance.processor }}</td>
+                    </tr>
+                    <tr>
+                        <td>ISO :</td>
                         <td>{{ instance.os }}</td>
                     </tr>
                     <tr>
                         <td>Serveur :</td>
-                        <td>{{ instance.serverName }}</td>
+                        <td>{{ instance.virtualizationServer }}</td>
                     </tr>
                 </tbody>
             </table>

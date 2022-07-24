@@ -34,6 +34,7 @@ export class EditInstanceComponent implements OnInit {
       vmName: ['', [Validators.required]],
       ram: ['', [Validators.required]],
       storage: ['', [Validators.required]],
+      processor: ['', [Validators.required]],
     });
   }
 
@@ -47,6 +48,7 @@ export class EditInstanceComponent implements OnInit {
           vmName: this.instance.vmName,
           ram: this.instance.ram,
           storage: this.instance.storage,
+          processor: this.instance.processor
         });
       }
     );
@@ -56,14 +58,17 @@ export class EditInstanceComponent implements OnInit {
     const vmName = this.editInstanceForm.get('vmName')!.value;
     const ram = this.editInstanceForm.get('ram')!.value;
     const storage = this.editInstanceForm.get('storage')!.value;
+    const processor = this.editInstanceForm.get('processor')!.value;
 
     const editInstance: Instance = {
         vmName: vmName,
-        unity: this.instance.unity,
         ram: ram,
+        ramUnity: this.instance.ramUnity,
         storage: storage,
+        storageUnity: this.instance.storageUnity,
+        processor: processor,
         os: this.instance.os,
-        serverName: this.instance.serverName,
+        virtualizationServer: this.instance.virtualizationServer,
         uid: this.instance.uid,
         vmId: this.instance.vmId,
         serverId: this.instance.serverId,

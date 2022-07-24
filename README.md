@@ -21,7 +21,7 @@ Model Instance :
 - **ram** number *required*
 - **storage** number *required*
 - **os** string *required*
-- **serverName** string *required*
+- **virtualizationServer** string *required*
 - **uid** any
 - **vmId** any
 - **serverId** any

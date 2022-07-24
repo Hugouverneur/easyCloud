@@ -39,4 +39,8 @@ export class PowereshellService {
     return this.request('GET', `${environment.serverUrl}/instance-monitoring`, vmParams)
   }
 
+  getInstanceISO() {
+    return this.request('GET', `${environment.serverUrl}/instance-monitoring`, )
+  }
+
 }
