@@ -40,7 +40,7 @@ export class PowereshellService {
   }
 
   getInstanceISO() {
-    return this.request('GET', `${environment.serverUrl}/instance-monitoring`, )
+    return this.request('GET', `${environment.serverUrl}/initcreation`, )
   }
 
 }

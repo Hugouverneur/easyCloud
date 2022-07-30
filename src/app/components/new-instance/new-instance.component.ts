@@ -24,6 +24,7 @@ export class NewInstanceComponent implements OnInit {
               private pss: PowereshellService) { }
 
   ngOnInit(): void {
+    this.getInstanceIso();
     this.initForm();
   }
 

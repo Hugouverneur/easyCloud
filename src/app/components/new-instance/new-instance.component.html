@@ -28,9 +28,7 @@
     
             <label for="os">Système d'exploitation</label>
             <select formControlName="os" id="os">
-                <option *ngFot="let iso instanceAvailableIso" value="{{ iso }}" selected>{{ iso }}</option>
-                <option value="\\EASYCLOUD-APP\ISO\Test.iso" selected>Test.iso</option>
-                <option value="\\EASYCLOUD-APP\ISO\Test2.iso">Test2.iso</option>
+                <option *ngFor="let iso of instanceAvailableIso" value="{{ iso }}" selected>{{ iso }}</option>
             </select>
 
             <label for="virtualizationServer">Nom du Serveur</label>
