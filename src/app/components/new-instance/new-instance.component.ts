@@ -16,7 +16,7 @@ export class NewInstanceComponent implements OnInit {
 
   newInstanceForm!: FormGroup;
   errorMessage!: string;
-  instanceAvailableIso!: Array<string>;
+  instanceAvailableIso!: {};
 
   constructor(private formBuilder: FormBuilder,
               private instancesService: InstancesService,
@@ -90,7 +90,7 @@ export class NewInstanceComponent implements OnInit {
 
   getInstanceIso() {
     this.pss.getInstanceISO().then(
-      (returnAvailableIso: Array<string>) => {
+      (returnAvailableIso: {}) => {
         this.instanceAvailableIso = returnAvailableIso;
       }
     )
