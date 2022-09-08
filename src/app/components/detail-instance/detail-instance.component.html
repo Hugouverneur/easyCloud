@@ -1,8 +1,8 @@
 <div class="app_wrap">
     <div class="instance_header">
         <h1>{{ instance.vmName }}</h1>
-        <div class="dot" *ngIf=" (instanceMonitoring$ | async) != null" style="background-color: rgb(5, 179, 5)"></div>
-        <div class="dot" *ngIf=" (instanceMonitoring$ | async) == null" style="background-color: #f94949"></div>
+        <div class="dot" *ngIf=" (instanceMonitoring$ | async) != null" style="background-color: rgb(5, 179, 5)" title="Running"></div>
+        <div class="dot" *ngIf=" (instanceMonitoring$ | async) == null" style="background-color: #f94949" title="Sleeping"></div>
     </div>
     <hr>
     <div class="instance_body">

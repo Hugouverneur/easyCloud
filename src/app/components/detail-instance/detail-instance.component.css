@@ -59,7 +59,7 @@ hr {
 }
 .monitoring_bar {
     width: 100%;
-    transition: ease 0.2s;
+    transition: ease-in-out 0.2s;
     border-radius: 6px;
     padding: 0 6px;
     font-weight: bold;
