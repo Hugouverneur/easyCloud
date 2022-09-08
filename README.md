@@ -17,9 +17,11 @@ Nos Modèles de données sont définis dans ```src/app/models```.
 Model Instance :
 
 - **vmName** string *required*
-- **unity** string *required*
 - **ram** number *required*
+- **ramUnity** string *required*
 - **storage** number *required*
+- **storageUnity** string *required*
+- **processor** number *required*
 - **os** string *required*
 - **virtualizationServer** string *required*
 - **uid** any
