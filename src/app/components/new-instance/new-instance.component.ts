@@ -67,6 +67,7 @@ export class NewInstanceComponent implements OnInit {
 
     this.pss.createVm(newInstance).then(
       (data: any) => {
+        console.log(data);
         newInstance['vmId'] = data.vmId;
         newInstance['serverId'] = data.serverId;
         
@@ -90,7 +91,7 @@ export class NewInstanceComponent implements OnInit {
 
   getInstanceIso() {
     this.pss.getInstanceISO().then(
-      (returnAvailableIso: [any]) => {
+      (returnAvailableIso: [any]) => {        
         this.instanceAvailableIso = returnAvailableIso;
       }
     )

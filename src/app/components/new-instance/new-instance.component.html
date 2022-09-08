@@ -28,7 +28,7 @@
     
             <label for="os">Système d'exploitation</label>
             <select formControlName="os" id="os">
-                <option *ngFor="let iso of instanceAvailableIso" value="{{ '\\' + iso.Folder + '\Iso\' + iso.Filename }}" selected>{{ iso.Filename }}</option>
+                <option *ngFor="let iso of instanceAvailableIso" [value]="'\\\\'+iso.Folder +'\\Iso\\'+ iso.Filename" selected>{{ iso.Filename }}</option>
             </select>
 
             <label for="virtualizationServer">Nom du Serveur</label>
