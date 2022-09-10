@@ -1,8 +1,14 @@
 <div class="app_wrap">
     <div class="instance_header">
         <h1>{{ instance.vmName }}</h1>
-        <div class="dot" *ngIf=" (instanceMonitoring$ | async) != null" style="background-color: rgb(5, 179, 5)" title="Running"></div>
-        <div class="dot" *ngIf=" (instanceMonitoring$ | async) == null" style="background-color: #f94949" title="Sleeping"></div>
+        <div>
+            <button (click)="turnOn()">
+                <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) != null" style="color: rgb(5, 179, 5)" title="Running">power_settings_new</span>
+            </button>
+            <button (click)="turnOff()">
+                <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) == null" style="color: #f94949" title="Sleeping">power_settings_new</span>
+            </button>
+        </div>
     </div>
     <hr>
     <div class="instance_body">
@@ -36,7 +42,7 @@
                 </tbody>
             </table>
             <div class="connect_instance">
-                <a href="../../../assets/vmconnect-files/{{ instance.vmId }}.lnk" target="_blank" download="{{ instance.vmId }}.lnk"><span class="material-icons-round">cloud_download</span>Se connecter</a>
+                <a href="../../../assets/vmconnect-files/{{ instance.vmId }}.bat" target="_blank" download="{{ instance.vmId }}.bat"><span class="material-icons-round">cloud_download</span>Se connecter</a>
             </div>
         </section>
         <section class="perf_bars">

@@ -1,7 +1,7 @@
 .instance_header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin: 0px 16px;
 }
 
@@ -95,4 +95,16 @@ hr {
 }
 .connect_instance a span {
     margin-right: 8px;
+}
+
+.power_btn {
+    font-size: 28px;
+    transition: ease 0.2s;
+}
+.power_btn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.instance_header div button {
+    all: unset;
 }

@@ -43,4 +43,12 @@ export class PowereshellService {
     return this.request('GET', `${environment.serverUrl}/initcreation`, )
   }
 
+  turnOn() {
+    return this.request('GET', `${environment.serverUrl}/`, )
+  }
+
+  turnOff() {
+    return this.request('GET', `${environment.serverUrl}/`, )
+  }
+
 }

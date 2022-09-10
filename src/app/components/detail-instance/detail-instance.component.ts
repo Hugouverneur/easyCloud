@@ -49,4 +49,12 @@ export class DetailInstanceComponent implements OnInit {
     // return this.powereshellService.getInstanceMonitoring(vmParams); // <- Appel powershell
     return [Math.floor(Math.random()*100), Math.floor(Math.random()*100), Math.floor(Math.random()*100)] // Pour tester en dev
   }
+
+  turnOn(): void {
+    this.powereshellService.turnOn();
+  }
+
+  turnOff(): void {
+    this.powereshellService.turnOff();
+  }
 }
