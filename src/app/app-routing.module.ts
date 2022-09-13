@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'new-instance', canActivate: [AuthGuardService], component: NewInstanceComponent },
   { path: 'instance/:id', canActivate: [AuthGuardService], component: DetailInstanceComponent },
   { path: 'edit-instance/:id', canActivate: [AuthGuardService], component: EditInstanceComponent},
-  { path: 'delete-instance/:id', canActivate: [AuthGuardService], component: DeleteInstanceComponent},
+  { path: 'delete-instance/:id/:vmId/:virtualizationServer', canActivate: [AuthGuardService], component: DeleteInstanceComponent},
 ];
 
 @NgModule({

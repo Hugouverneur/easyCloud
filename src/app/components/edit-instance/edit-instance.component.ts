@@ -5,6 +5,7 @@ import { InstancesService } from 'src/app/services/instances.service';
 import { PowereshellService } from 'src/app/services/powereshell.service';
 import * as firebaseAuth from 'firebase/auth';
 import { Instance } from '../../models/instance.model';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-instance',
@@ -17,6 +18,7 @@ export class EditInstanceComponent implements OnInit {
   errorMessage!: string;
   instance: any = {};
   instanceId: string = this.route.snapshot.params['id'];
+  instancePssData: any = {};
 
   constructor(private formBuilder: FormBuilder,
               private instancesService: InstancesService,
@@ -42,6 +44,7 @@ export class EditInstanceComponent implements OnInit {
     this.instancesService.getSingleInstance(this.instanceId).then(
       (data) => {
         this.instance = data;
+        this.getVmStatus();
         
         // Complète les champs avec les données récupéré
         this.editInstanceForm.setValue({
@@ -60,7 +63,7 @@ export class EditInstanceComponent implements OnInit {
     const storage = this.editInstanceForm.get('storage')!.value;
     const processor = this.editInstanceForm.get('processor')!.value;
 
-    const editInstance: Instance = {
+    const editInstance: any = {
         vmName: vmName,
         ram: ram,
         ramUnity: this.instance.ramUnity,
@@ -72,6 +75,7 @@ export class EditInstanceComponent implements OnInit {
         uid: this.instance.uid,
         vmId: this.instance.vmId,
         serverId: this.instance.serverId,
+        path: this.instancePssData.path
     }
 
     this.instancesService.editInstance(editInstance, this.instanceId).then(
@@ -89,7 +93,15 @@ export class EditInstanceComponent implements OnInit {
 
   confirmBeforeDelete() {
     if(confirm('Etes-vous sûr de vouloir supprimer votre instance !')) {
-      this.router.navigate(['/delete-instance/' + this.instanceId]);
+      this.router.navigate(['/delete-instance/' + this.instanceId + '/' + this.instance.vmId + '/' + this.instance.virtualizationServer]);
     }
+  }
+
+  getVmStatus() {
+    this.pss.getVmStatus().then(
+      (vmData: any) => {
+        this.instancePssData = vmData;
+      }
+    )
   }
 }
