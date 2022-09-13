@@ -50,11 +50,11 @@ export class DetailInstanceComponent implements OnInit {
     return [Math.floor(Math.random()*100), Math.floor(Math.random()*100), Math.floor(Math.random()*100)] // Pour tester en dev
   }
 
-  turnOn(): void {
-    this.powereshellService.turnOn();
-  }
-
-  turnOff(): void {
-    this.powereshellService.turnOff();
+  switchPower(): void {
+    let vmParams = {
+      'instanceId': this.instanceId,
+      'virtualizationServer': this.instance.virtualizationServer
+    }
+    this.powereshellService.switchPower(vmParams);
   }
 }

@@ -43,12 +43,9 @@ export class PowereshellService {
     return this.request('GET', `${environment.serverUrl}/initcreation`, )
   }
 
-  turnOn() {
-    return this.request('GET', `${environment.serverUrl}/`, )
-  }
-
-  turnOff() {
-    return this.request('GET', `${environment.serverUrl}/`, )
+  switchPower(vmParams) {
+    console.log('POWERRRRRRR');
+    return this.request('POST', `${environment.serverUrl}/`, vmParams)
   }
 
   getVmStatus(vmParams: any) {

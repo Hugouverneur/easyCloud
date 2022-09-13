@@ -2,10 +2,10 @@
     <div class="instance_header">
         <h1>{{ instance.vmName }}</h1>
         <div>
-            <button (click)="turnOn()">
+            <button (click)="switchPower()">
                 <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) != null" style="color: rgb(5, 179, 5)" title="Running">power_settings_new</span>
             </button>
-            <button (click)="turnOff()">
+            <button (click)="switchPower()">
                 <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) == null" style="color: #f94949" title="Sleeping">power_settings_new</span>
             </button>
         </div>
