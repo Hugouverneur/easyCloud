@@ -74,10 +74,9 @@ export class EditInstanceComponent implements OnInit {
         virtualizationServer: this.instance.virtualizationServer,
         uid: this.instance.uid,
         vmId: this.instance.vmId,
-        serverId: this.instance.serverId,
-        path: this.instancePssData.path
+        path: this.instancePssData.Disk[0].Path
     }
-
+    
     this.instancesService.editInstance(editInstance, this.instanceId).then(
       () => {
         this.pss.editVm(editInstance);
@@ -102,6 +101,7 @@ export class EditInstanceComponent implements OnInit {
       'vmId': vmId,
       'virtualizationServer': virtualizationServer
     }
+
     this.pss.getVmStatus(instanceParams).then(
       (vmData: any) => {
         this.instancePssData = vmData;

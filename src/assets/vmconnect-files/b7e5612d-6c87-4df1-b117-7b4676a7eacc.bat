@@ -1,0 +1,1 @@
+vmconnect VMSRV01 -G b7e5612d-6c87-4df1-b117-7b4676a7eacc
