@@ -67,7 +67,7 @@ export class NewInstanceComponent implements OnInit {
 
     this.pss.createVm(newInstance).then(
       (data: any) => {
-        newInstance['vmId'] = data.vmId;
+        newInstance['vmId'] = data.VMId;
         
         this.instancesService.newInstance(newInstance).then(
           () => {
