@@ -31,7 +31,7 @@ export class PowereshellService {
     return this.request('POST', `${environment.serverUrl}/setvmconfig`, vmParams)
   }
 
-  deleteVm(vmParams: Instance) {
+  deleteVm(vmParams: any) {
     return this.request('POST', `${environment.serverUrl}/deletevm`, vmParams)
   }
 
