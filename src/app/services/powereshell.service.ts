@@ -45,7 +45,7 @@ export class PowereshellService {
 
   switchPower(vmParams) {
     console.log('POWERRRRRRR');
-    return this.request('POST', `${environment.serverUrl}/`, vmParams)
+    return this.request('POST', `${environment.serverUrl}/setvmstatus`, vmParams)
   }
 
   getVmStatus(vmParams: any) {

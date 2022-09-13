@@ -52,7 +52,7 @@ export class DetailInstanceComponent implements OnInit {
 
   switchPower(): void {
     let vmParams = {
-      'instanceId': this.instanceId,
+      'vmId': this.instance.vmId,
       'virtualizationServer': this.instance.virtualizationServer
     }
     this.powereshellService.switchPower(vmParams);
