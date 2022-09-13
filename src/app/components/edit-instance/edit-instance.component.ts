@@ -42,9 +42,9 @@ export class EditInstanceComponent implements OnInit {
 
   getInstance() {
     this.instancesService.getSingleInstance(this.instanceId).then(
-      (data) => {
+      (data: any) => {
         this.instance = data;
-        this.getVmStatus();
+        this.getVmStatus(data.vmId, data.virtualizationServer);
         
         // Complète les champs avec les données récupéré
         this.editInstanceForm.setValue({
@@ -97,8 +97,12 @@ export class EditInstanceComponent implements OnInit {
     }
   }
 
-  getVmStatus() {
-    this.pss.getVmStatus().then(
+  getVmStatus(vmId, virtualizationServer) {
+    let instanceParams: any = {
+      'vmId': vmId,
+      'virtualizationServer': virtualizationServer
+    }
+    this.pss.getVmStatus(instanceParams).then(
       (vmData: any) => {
         this.instancePssData = vmData;
       }

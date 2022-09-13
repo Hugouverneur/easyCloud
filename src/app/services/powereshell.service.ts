@@ -51,8 +51,8 @@ export class PowereshellService {
     return this.request('GET', `${environment.serverUrl}/`, )
   }
 
-  getVmStatus() {
-    return this.request('GET', `${environment.serverUrl}/getvmstatus`, )
+  getVmStatus(vmParams: any) {
+    return this.request('GET', `${environment.serverUrl}/getvmstatus`, vmParams)
   }
 
 }
