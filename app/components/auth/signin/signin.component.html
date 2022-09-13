@@ -1,0 +1,15 @@
+<div class="signup_container">
+    <div class="signup_form app_wrap">
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+            <h1>Connexion</h1>
+            <label for="email">E-mail</label>
+            <input type="text" id="email" formControlName="email">
+
+            <label for="password">Mot-de-passe</label>
+            <input type="password" id="password" formControlName="password">
+
+            <button type="submit" class="btn primary_btn" [disabled]="signinForm.invalid">Se connecter</button>
+            <p class="error_message" *ngIf="errorMessage">{{ errorMessage }}</p>
+        </form>
+    </div>
+</div>

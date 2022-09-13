@@ -1,0 +1,110 @@
+.instance_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0px 16px;
+}
+
+.instance_body {
+    display: flex;
+    height: 50vh;
+}
+.instance_body section {
+    background-color: white;
+    border-radius: 6px;
+    margin: 16px;
+    padding: 16px;
+    width: 162px;
+}
+
+.description {
+    flex-grow: 1;
+}
+
+.descritpion_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature_table td:first-child {
+    font-weight: bold;
+}
+.feature_table td:last-child {
+    color: #707070
+}
+
+hr {
+    border: solid 1px #E6E6E6;
+}
+
+/* Monitoring bars */
+.perf_bars {
+    flex-grow: 5;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.single_bar_container p {
+    text-align: center;
+}
+.bar {
+    background-color: #E6E6E6;
+    width: 128px;
+    height: 90%;
+    display: flex;
+    align-items: flex-end;
+    margin: 0 18px;
+    border-radius: 6px;
+}
+.monitoring_bar {
+    width: 100%;
+    transition: ease-in-out 0.2s;
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: bold;
+}
+.monitoring_processor {
+    background-color: #00c9ff;
+}
+.monitoring_ram {
+    background-color: #53E7C5;
+}
+.monitoring_storage {
+    background-color: #8FFD9C;
+}
+
+.connect_instance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 18px;
+}
+.connect_instance a {
+    font-weight: bold;
+    color: #00c9ff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.connect_instance a:hover span {
+    display: block;
+    transform: scale(1.3);
+    transition: ease-in-out 0.2s;
+}
+.connect_instance a span {
+    margin-right: 8px;
+}
+
+.power_btn {
+    font-size: 28px;
+    transition: ease 0.2s;
+}
+.power_btn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.instance_header div button {
+    all: unset;
+}

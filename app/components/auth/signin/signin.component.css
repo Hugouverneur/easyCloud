@@ -1,0 +1,15 @@
+.signup_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup_form {
+    background-color: white;
+    border-radius: 12px;
+    margin: 56px;
+}
+
+.signup_form form {
+    margin: 12px 24px;
+}

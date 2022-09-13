@@ -1,0 +1,16 @@
+<nav>
+    <div class="app_wrap" id="div_nav">
+        <div class="nav_left">
+            <a routerLink="/">
+                <img src="../../../assets/img/easyCloud-logo.svg" alt="easyCloud" width="56">
+                <p class="p_logo"><span class="light_text">easy</span><span id="cloud_bold">CLoud</span></p>
+            </a>
+            <a routerLink="/list-instances">Instances</a>
+        </div>
+        <div class="nav_right">
+            <a routerLink="/signin" *ngIf="!isAuth">Connexion</a>
+            <a routerLink="/signup" *ngIf="!isAuth" id="signup_btn">Inscription</a>
+            <a (click)="onSignOut()" *ngIf="isAuth" id="signout_btn">Déconnexion</a>
+        </div>
+    </div>
+</nav>

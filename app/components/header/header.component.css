@@ -1,0 +1,46 @@
+nav {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: center;
+}
+
+#div_nav > div {
+    display: flex;
+    align-items: center;
+}
+
+#div_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#div_nav a{
+    display: flex;
+    align-items: center;
+    margin: 0px 12px;
+}
+
+/* Buttons */
+#signup_btn {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #00C9FF;
+    transition: ease 0.2s;
+}
+#signup_btn:hover {
+    background-color: #4acef243;
+}
+
+#signout_btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #f94949;
+    transition: ease 0.2s;
+}
+#signout_btn:hover {
+    cursor: pointer;
+    background-color: #ffbeaf98;
+}

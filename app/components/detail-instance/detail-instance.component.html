@@ -1,0 +1,72 @@
+<div class="app_wrap">
+    <div class="instance_header">
+        <h1>{{ instance.vmName }}</h1>
+        <div>
+            <button (click)="switchPower()">
+                <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) != null" style="color: rgb(5, 179, 5)" title="Running">power_settings_new</span>
+            </button>
+            <button (click)="switchPower()">
+                <span class="material-icons-round power_btn" *ngIf=" (instanceMonitoring$ | async) == null" style="color: #f94949" title="Sleeping">power_settings_new</span>
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="instance_body">
+        <section class="description">
+            <div class="descritpion_header">
+                <h2>Description</h2>
+                <a routerLink="/edit-instance/{{ instanceId }}" class="back_arrow" title="Edit"><span class="material-icons-round">edit</span></a>
+            </div>
+            <table class="feature_table">
+                <tbody>
+                    <tr>
+                        <td>RAM :</td>
+                        <td>{{ instance.ram }} {{ instance.ramUnity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Stockage :</td>
+                        <td>{{ instance.storage }} {{ instance.storageUnity }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre de processeur :</td>
+                        <td>{{ instance.processor }}</td>
+                    </tr>
+                    <tr>
+                        <td>ISO :</td>
+                        <td>{{ instance.os }}</td>
+                    </tr>
+                    <tr>
+                        <td>Serveur :</td>
+                        <td>{{ instance.virtualizationServer }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="connect_instance">
+                <a href="../../../assets/vmconnect-files/{{ instance.vmId }}.bat" target="_blank" download="{{ instance.vmId }}.bat"><span class="material-icons-round">cloud_download</span>Se connecter</a>
+            </div>
+        </section>
+        <section class="perf_bars">
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_processor" [ngStyle]="{'height': (instanceMonitoring$ | async)[0]+'%'}">{{ (instanceMonitoring$ | async)[0] }}%</div>
+                </div>
+                <p>Processeur</p>
+            </div>
+
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_ram" [ngStyle]="{'height': (instanceMonitoring$ | async)[1]+'%'}">{{ (instanceMonitoring$ | async)[1] }}%</div>
+                </div>
+                <p>RAM</p>
+            </div>
+
+            <div class="single_bar_container">
+                <div class="bar">
+                    <div class="monitoring_bar monitoring_storage" [ngStyle]="{'height': (instanceMonitoring$ | async)[2]+'%'}">{{ (instanceMonitoring$ | async)[2] }}%</div>
+                </div>
+                <p>Stockage</p>
+            </div>
+
+        </section>
+    </div>
+</div>
