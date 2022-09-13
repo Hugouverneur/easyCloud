@@ -23,7 +23,7 @@ export class DeleteInstanceComponent implements OnInit {
     this.instancesService.deleteInstance(this.route.snapshot.params['id']).then(
       () => {
         let instanceParams: any = {
-          'vmId': this.route.snapshot.params['id'],
+          'vmId': this.route.snapshot.params['vmId'],
           'virtualizationServer': this.route.snapshot.params['virtualizationServer']
         }
         this.pss.deleteVm(instanceParams);
